@@ -7,8 +7,17 @@ import Info from "../info/index.js";
 import "./index.less";
 const { Header, Content, Footer, Sider } = Layout;
 class Demo extends Component {
+    state={
+        keys:[]
+    }
     componentWillMount = () => {
+      
         console.log("开始绘制")
+    }
+    menuclick = ({ item, key, keyPath })=>{
+        this.setState({
+            keys:[key]
+        })
     }
     render() {
         return (
@@ -25,18 +34,18 @@ class Demo extends Component {
                     <div className="Avatar">
                         <Avatar size={164} style={{ display: "block", margin: " 0 auto" }} src="https://picsum.photos/200/300/?random" />
                     </div>
-                    <Menu mode="inline" defaultSelectedKeys={['1']} className="menu">
+                    <Menu mode="inline" defaultSelectedKeys={['1']} selectedKeys={this.state.keys} className="menu" onClick={this.menuclick}>
                         <Menu.Item key="1">
-                            <Link className="nav-text" to="/ppp"> <Icon type="user" />nav 1</Link>
+                            <Link className="nav-text" to="/ppp"> <Icon type="user" />开发常用小工具</Link>
                         </Menu.Item>
                         <Menu.Item key="2">
-                            <Link className="nav-text" extact to="/iii"><Icon type="video-camera" />nav 1</Link>
+                            <Link className="nav-text" extact to="/iii"><Icon type="video-camera" />前端基础demo</Link>
                         </Menu.Item>
                         <Menu.Item key="3">
-                            <Link className="nav-text" to="/iii/a"> <Icon type="upload" />nav 1</Link>
+                            <Link className="nav-text" to="/iii/a"> <Icon type="upload" />react使用碰到的问题</Link>
                         </Menu.Item>
                         <Menu.Item key="4">
-                            <Link className="nav-text" to="/iii/b"><Icon type="user" />nav 1</Link>
+                            <Link className="nav-text" to="/iii/b"><Icon type="user" />python后台demo</Link>
                         </Menu.Item>
                     </Menu>
                 </Sider>
