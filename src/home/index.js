@@ -3,6 +3,7 @@ import { Route, Switch, Link } from "dva/router";
 import { Layout, Menu, Icon, Avatar, } from "antd";
 import moment from "moment";
 import III from "../left/iii.js";
+import Info from "../info/index.js";
 import "./index.less";
 const { Header, Content, Footer, Sider } = Layout;
 class Demo extends Component {
@@ -46,9 +47,7 @@ class Demo extends Component {
                     <Content style={{ margin: '24px'}}>
                         <Switch>
                             <Route exact path="/iii" component={III} />
-                            <Route exact  path="/iii/b" render={()=>{
-                                return <span>1234567</span>
-                            }} />
+                            <Route exact  path="/iii/b" component={Info}/>
                         </Switch>
                     </Content>
                     <Footer style={{ textAlign: 'center' }}>

@@ -1,52 +1,20 @@
 import React, { Component } from 'react';
 // import { routerRedux, Route, Switch, Router, Redirect } from "dva/router";
 import { List, Avatar, Icon } from "antd";
-let listData = [];
-for (let i = 0; i < 23; i++) {
-    listData.push({
-        href: 'http://ant.design',
-        title: `ant design part ${i}`,
-        avatar: 'https://picsum.photos/300/300/?random',
-        description: 'Ant Design, a design language for background applications, is refined by Ant UED Team.',
-        content: 'yueyongkdjlsfjdlfjlsdjflsjdlfjsljflsjdfkljsdljfklsdjfljsdlkfjsdlfjlskdj',
-    });
-}
-
-const IconText = ({ type, text }) => (
-    <span>
-        <Icon type={type} style={{ marginRight: 8 }} />
-        {text}
-    </span>
-);
 class Demo extends Component {
 
     render() {
         return (
-            <List
-                itemLayout="vertical"
-                size="large"
-                pagination={{
-                    onChange: (page) => {
-                        console.log(page);
-                    },
-                    pageSize: 4,
-                }}
-                dataSource={listData}
-                renderItem={item => (
-                    <List.Item
-                        key={item.title}
-                        actions={[<IconText type="star-o" text="156" />, <IconText type="like-o" text="156" />, <IconText type="message" text="2" />]}
-                        extra={<img width={272} alt="logo" src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png" />}
-                    >
-                        <List.Item.Meta
-                            avatar={<Avatar src={item.avatar} />}
-                            title={<a href={item.href}>{item.title}</a>}
-                            description={item.description}
-                        />
-                        {item.content}
-                    </List.Item>
-                )}
-            />
+            <div>
+                <img src="https://picsum.photos/300/300/?random" style={{float:"left"}}/>
+                <font size="4" style={{display: "inline-block",width: "60%"}}>
+                33333333333333333333333333333333333333333333333333333333333333333333333333333333333333
+                的附属国豆腐干士大夫感到十分个豆腐干岁的法国士大夫告诉对方感到附属国是豆腐干士大夫广泛大使馆士
+                大夫敢死队风格收费的公司风电公司梵蒂冈22222222222
+                    </font>
+                
+                
+            </div>
         )
     }
 
