@@ -21,13 +21,22 @@ class Demo extends Component {
         //重新定位menu
         if (nextProps.location.pathname != this.props.location.pathname) {
             //定位到了不同菜单下才会重新被选择
-            if (this.props.location.pathname.indexOf(nextProps.location.pathname) <= -1) {
+            if (nextProps.location.pathname.indexOf(this.props.location.pathname) < 0) {
                 this.setState({
                     selectedKeys: [nextProps.location.pathname]
                 })
             }
-
+            else {
+                this.setState({
+                    selectedKeys: [this.props.location.pathname]
+                })
+            }
         }
+    }
+    menuclick = ({ item, key, keyPath }) => {
+        this.setState({
+            keys: [key]
+        })
     }
     render() {
         return (
@@ -38,36 +47,35 @@ class Demo extends Component {
                     onBreakpoint={(broken) => { console.log(broken); }}
                     onCollapse={(collapsed, type) => { console.log(collapsed, type); }}
                     className="left"
-                    style={{ 'min-height': "100vh" }}
                     width={260}
                 >
                     <div className="Avatar">
                         <Avatar size={164} style={{ display: "block", margin: " 0 auto" }} src="https://picsum.photos/200/300/?random" />
                     </div>
                     <Menu mode="inline" className="menu" selectedKeys={this.state.selectedKeys}>
-                        <Menu.Item key="/ppp">
-                            <Link className="nav-text" to="/ppp"> <Icon type="user" />nav 1</Link>
+                        <Menu.Item key="/tools">
+                            <Link className="nav-text" to="/tools"> <Icon type="user" />开发常用小工具</Link>
                         </Menu.Item>
-                        <Menu.Item key="/iii">
-                            <Link className="nav-text" extact to="/iii"><Icon type="video-camera" />nav 1</Link>
+                        <Menu.Item key="/demo">
+                            <Link className="nav-text" extact to="/demo"><Icon type="video-camera" />前端基础demo</Link>
                         </Menu.Item>
-                        <Menu.Item key="/iii/a">
-                            <Link className="nav-text" to="/iii/a"> <Icon type="upload" />nav 1</Link>
+                        <Menu.Item key="/reactQ^A">
+                            <Link className="nav-text" to="/reactQ^A"> <Icon type="upload" />react使用碰到的问题</Link>
                         </Menu.Item>
-                        <Menu.Item key="/iii/b">
-                            <Link className="nav-text" to="/iii/b"><Icon type="user" />nav 1</Link>
+                        <Menu.Item key="/python">
+                            <Link className="nav-text" to="/python"><Icon type="user" />python后台demo</Link>
                         </Menu.Item>
                     </Menu>
                 </Sider>
-                <Layout>
+                <Layout className="mincontent" >
                     <Header style={{ background: '#fff', padding: 0 }} >
                         <span>博客建于：{moment("20181119", "YYYYMMDD").fromNow()}</span>
                     </Header>
                     <Content style={{ margin: '24px' }}>
                         <Switch>
-                            <Route exact path="/iii" component={III} />
-                            <Route exact path="/iii/b" component={Info} />
-                            <Route exact path="/ppp" component={PPP} />
+                            <Route exact path="/tools" component={PPP} />
+                            <Route exact path="/demo" component={III} />
+                            <Route exact path="/demo/:id" component={Info} />
                         </Switch>
                     </Content>
                     <Footer style={{ textAlign: 'center' }}>
