@@ -10,6 +10,8 @@ const app = dva(
 );
 app.model(require("./modal/tools").default);
 app.model(require("./modal/demo").default);
+app.model(require("./modal/react").default);
+app.model(require("./modal/python").default);
 app.router(require('./router').default);
 app.start("#root");
 

@@ -19,7 +19,7 @@ class Demo extends Component {
                 <Tabs defaultActiveKey="1" type="line" size="large" >
                     {this.props.tooldata.map((ele) => {
                         return (
-                            <TabPane tab={<span><Icon type="android" />{ele.title}</span>} key={ele.id}>
+                            <TabPane tab={<span><Icon type="tool" />{ele.title}</span>} key={ele.id}>
                                 <div className="content-title"><font >工具介绍:</font></div>
                                 <div className="content-content">{ele.content}</div>
                                 <div className="content-title"><font>云盘链接:</font></div>

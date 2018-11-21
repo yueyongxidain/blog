@@ -26,7 +26,7 @@ class Demo extends Component {
         return (
             <Card>
                 <List
-                    itemLayout="vertical"
+                    itemLayout="vertical" 
                     size="large"
                     pagination={{
                         onChange: (page) => {

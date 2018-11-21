@@ -1,10 +1,14 @@
 import React from 'react';
-import { routerRedux, Route, Switch, Router, Redirect } from "dva/router";
-import Homepage from "./home/index.js";
+import { Route, Switch, Router } from "dva/router";
+import Homepage from "./routes/home/index.js";
+import Admin_ from "./routes/admin_/index.js";
 function Routerconfig({ history, app }) {
     return (
         <Router history={history}>
-            <Route path="/" component={Homepage} />
+            <Switch>
+                <Route path="/e/admin" component={Admin_} />
+                <Route path="/" component={Homepage} />
+            </Switch>
         </Router>
     )
 }

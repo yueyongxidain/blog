@@ -2,9 +2,13 @@ import React, { Component } from 'react';
 import { Route, Switch, Link } from "dva/router";
 import { Layout, Menu, Icon, Avatar, } from "antd";
 import moment from "moment";
-import III from "../left/iii.js";
-import Info from "../info/index.js";
-import PPP from "../info/ppp.js";
+import Tools from "../tools/index.js";
+import Htmldemo from "../htmldemo/index.js";
+import Htmlinfo from "../htmldemo/demoinfo.js";
+import ReactList from "../react/index.js";
+import ReactInfo from "../react/Q&A.js";
+import Python from "../python/index.js";
+import PythonInfo from "../python/demoinfo.js";
 import "./index.less";
 const { Header, Content, Footer, Sider } = Layout;
 class Demo extends Component {
@@ -63,7 +67,7 @@ class Demo extends Component {
                             <Link className="nav-text" to="/reactQ^A"> <Icon type="upload" />react使用碰到的问题</Link>
                         </Menu.Item>
                         <Menu.Item key="/python">
-                            <Link className="nav-text" to="/python"><Icon type="user" />python后台demo</Link>
+                            <Link className="nav-text" to="/python"><Icon type="user" />python demo</Link>
                         </Menu.Item>
                     </Menu>
                 </Sider>
@@ -73,9 +77,13 @@ class Demo extends Component {
                     </Header>
                     <Content style={{ margin: '24px' }}>
                         <Switch>
-                            <Route exact path="/tools" component={PPP} />
-                            <Route exact path="/demo" component={III} />
-                            <Route exact path="/demo/:id" component={Info} />
+                            <Route exact path="/tools" component={Tools} />
+                            <Route exact path="/demo" component={Htmldemo} />
+                            <Route exact path="/demo/:id" component={Htmlinfo} />
+                            <Route exact path="/reactQ^A" component={ReactList} />
+                            <Route exact path="/reactQ^A/:id" component={ReactInfo} />
+                            <Route exact path="/python" component={Python} />
+                            <Route exact path="/python/:id" component={PythonInfo} />
                         </Switch>
                     </Content>
                     <Footer style={{ textAlign: 'center' }}>
