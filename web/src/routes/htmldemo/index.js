@@ -39,7 +39,6 @@ class Demo extends Component {
                         <List.Item
                             key={item.id}
                             actions={[<span>{`创建时间：${item.createtime}`}</span>]}
-                            extra={<img width={272} alt="logo" src={item.img}/>}
                         >
                             <List.Item.Meta
                                 avatar={<Avatar src='https://picsum.photos/300/300/?random' />}

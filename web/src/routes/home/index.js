@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch, Link } from "dva/router";
-import { Layout, Menu, Icon, Avatar, } from "antd";
+import { Layout, Menu, Icon, Avatar, Card } from "antd";
 import moment from "moment";
 import Tools from "../tools/index.js";
 import Htmldemo from "../htmldemo/index.js";
@@ -22,10 +22,16 @@ class Demo extends Component {
         console.log("开始绘制", this.props)
     }
     componentWillReceiveProps = (nextProps) => {
+        console.log("666666666666666666666666666666", this.props.location.pathname)
         //重新定位menu
         if (nextProps.location.pathname != this.props.location.pathname) {
             //定位到了不同菜单下才会重新被选择
             if (nextProps.location.pathname.indexOf(this.props.location.pathname) < 0) {
+                this.setState({
+                    selectedKeys: [nextProps.location.pathname]
+                })
+            }
+            else if (this.props.location.pathname == "/" || this.props.location.pathname == "/e/admin") {
                 this.setState({
                     selectedKeys: [nextProps.location.pathname]
                 })
@@ -54,7 +60,7 @@ class Demo extends Component {
                     width={260}
                 >
                     <div className="Avatar">
-                        <Avatar size={164} style={{ display: "block", margin: " 0 auto" }} src="https://picsum.photos/200/300/?random" />
+                        <Link extact to="/"><Avatar size={164} style={{ display: "block", margin: " 0 auto" }} src="https://picsum.photos/200/300/?random" /></Link>
                     </div>
                     <Menu mode="inline" className="menu" selectedKeys={this.state.selectedKeys}>
                         <Menu.Item key="/tools">
@@ -73,10 +79,21 @@ class Demo extends Component {
                 </Sider>
                 <Layout className="mincontent" >
                     <Header style={{ background: '#fff', padding: 0 }} >
-                        <span>博客建于：{moment("20181119", "YYYYMMDD").fromNow()}</span>
+                        <div className="header-text"><span>技术栈：React、Antd、Dva</span></div>
+                        <div className="header-text"><span>博客建于：{moment("20181119", "YYYYMMDD").fromNow()}</span></div>
                     </Header>
                     <Content style={{ margin: '24px' }}>
                         <Switch>
+                            <Route exact path="/" render={() => {
+                                return (
+                                    <Card>
+                                        <div className="home-link">React：<a href="https://react.docschina.org/" target="view_window">https://react.docschina.org/</a></div>
+                                        <div className="home-link">Antd &nbsp;：<a href="https://ant.design" target="view_window">https://ant.design</a></div>
+                                        <div className="home-link">Dva &nbsp;&nbsp; ：<a href="https://dvajs.com/guide/" target="view_window">https://dvajs.com/guide/</a></div>
+                                        <img />
+                                    </Card>
+                                )
+                            }} />
                             <Route exact path="/tools" component={Tools} />
                             <Route exact path="/demo" component={Htmldemo} />
                             <Route exact path="/demo/:id" component={Htmlinfo} />

@@ -32,6 +32,13 @@ class Demo extends Component {
                 <List
                     itemLayout="horizontal"
                     dataSource={reactdata}
+                    size="large"
+                    pagination={{
+                        onChange: (page) => {
+                            console.log(page);
+                        },
+                        pageSize: 3,
+                    }}
                     renderItem={item => (
                         <List.Item
                         actions={[<span>{`创建时间：${item.createtime}`}</span>]}

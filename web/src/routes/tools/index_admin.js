@@ -17,11 +17,13 @@ const columns = [{
 }, {
     title: '百度云',
     dataIndex: 'baidu',
-    key: 'baidu'
+    key: 'baidu',
+    width:280
 }, {
     title: '私有云',
     key: 'personal',
-    dataIndex: 'personal'
+    dataIndex: 'personal',
+    width:280
 }, {
     title: '操作',
     key: 'action',

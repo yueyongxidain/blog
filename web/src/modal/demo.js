@@ -1,26 +1,55 @@
 import { routerRedux } from "dva/router";
 import { GET, POST } from "../request/index.js";
 // import { getAuthority, setAuthority } from "../authority/index.js";
-import fetch from "dva/fetch";
+import { message } from "antd"
 export default {
     namespace: "demo",
     state: {
-        demodata:[]
+        demodata: [],
+        visible: false,
+        changedata: {},
+        addvisible: false
     },
     effects: {
         //登录
         *findhtmlDemo({ payload }, { call, put }) {
-            const { errorCode ,data} = yield call(POST, "/findhtmlDemo", payload);
+            const { errorCode, data } = yield call(POST, "/findhtmlDemo", payload);
             if (errorCode == "0") {
                 yield put({
-                    type:"save",
-                    payload:{
-                        demodata:data
+                    type: "save",
+                    payload: {
+                        demodata: data
                     }
                 })
             }
-           
-        }
+
+        },
+        *changedemo({ payload }, { call, put }) {
+            const { errorCode, data } = yield call(POST, "/changedemo", payload);
+            if (errorCode == "0") {
+                yield put({
+                    type: "save",
+                    payload: {
+                        visible: false,
+                        addvisible: false
+                    }
+                })
+                yield put({
+                    type: "findhtmlDemo",
+                    payload: {}
+                })
+            }
+        },
+        *deletedemo({ payload }, { call, put }) {
+            const { errorCode, data } = yield call(POST, "/deletedemo", payload);
+            if (errorCode == "0") {
+                message.success("删除成功")
+                yield put({
+                    type: "findhtmlDemo",
+                    payload: {}
+                })
+            }
+        },
     },
     reducers: {
         save(state, { payload }) {

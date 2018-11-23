@@ -15,7 +15,7 @@ class Demo extends Component {
     }
     render() {
         return (
-            <Card style={{"min-height":"70vh"}}>
+            <Card style={{ "min-height": "70vh" }}>
                 <Tabs defaultActiveKey="1" type="line" size="large" >
                     {this.props.tooldata.map((ele) => {
                         return (
@@ -25,10 +25,14 @@ class Demo extends Component {
                                 <div className="content-title"><font>云盘链接:</font></div>
                                 <Tabs defaultActiveKey={`${ele.id}-1`} type="line" size="large" tabPosition="left" >
                                     <TabPane tab={<span><Icon type="android" />百度云</span>} key={`${ele.id}-1`}>
-                                        {ele.baidu}
+                                        <div className="a_link">
+                                            <a href={ele.baidu} target="view_window">{ele.baidu}</a>
+                                        </div>
                                     </TabPane>
                                     <TabPane tab={<span><Icon type="android" />私有云</span>} key={`${ele.id}-2`}>
-                                        {ele.personal}
+                                        <div className="a_link">
+                                            <a href={ele.personal} target="view_window">{ele.personal}</a>
+                                        </div>
                                     </TabPane>
                                 </Tabs>
                             </TabPane>
