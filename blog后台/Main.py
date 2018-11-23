@@ -85,9 +85,10 @@ def findhtmlDemo():
         dat = json.loads(request.data)
         if dat !={}:
             id = dat["id"]
-            findsql = "SELECT * FROM htmlDemo where id=" + id + " ORDER BY createtime DESC"
+            findsql = "SELECT * FROM htmldemo where id=" + id + " ORDER BY createtime DESC"
         else:
-            findsql = "SELECT * FROM htmlDemo ORDER BY createtime DESC"
+            findsql = "SELECT * FROM htmldemo ORDER BY createtime DESC"
+            print results
         try:
             # 执行SQL语句
             cursor.execute(findsql)
