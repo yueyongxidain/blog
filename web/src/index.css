@@ -12,3 +12,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+body{
+  min-width: 75vh;
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-x: scroll;
+}
+.ant-layout-sider-zero-width-trigger{
+  top:12px !important;
+}

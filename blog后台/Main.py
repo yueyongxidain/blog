@@ -4,7 +4,7 @@ reload(sys)
 sys.setdefaultencoding('utf8')
 #-----------------------------------以上为控制编码方式
 from flask import Flask;    #创建flask应用
-from flask import request;  #接受请求
+from flask import request,Response;  #接受请求
 from flask import jsonify;  #转换成json
 import MySQLdb     #连接数据库
 import json      #解析json
@@ -88,7 +88,6 @@ def findhtmlDemo():
             findsql = "SELECT * FROM htmldemo where id=" + id + " ORDER BY createtime DESC"
         else:
             findsql = "SELECT * FROM htmldemo ORDER BY createtime DESC"
-            print results
         try:
             # 执行SQL语句
             cursor.execute(findsql)
@@ -279,13 +278,13 @@ def changepython():
 #===========================img上传操作===================================
 @app.route('/img',methods=['POST'])
 def img():
-    if request.method == "POST":
+    if request.method == "POST" :
         basedir = ""+os.path.abspath(os.path.dirname(__file__))
         # 生成随机字符串，防止图片名字重复
         ran_str = ("".join(random.sample(string.ascii_letters + string.digits, 16))).encode('utf-8')
         # 获取图片文件
         img = request.files.get('file')
-        # print img
+        print "拿到图片"
         # 定义一个图片存放的位置
         path = basedir + "/static/img/"
         # print type(path)
@@ -298,7 +297,7 @@ def img():
         # 保存图片
         img.save(file_path)
         # 这个是图片的访问路径，需返回前端（可有可无）
-        url = '/static/img/' + imgName
+        url =  imgName
         # 要返回前端的json
         resData = {
             "errorCode":0,
@@ -308,6 +307,16 @@ def img():
         # 返回json 到前端
         return json.dumps(resData, ensure_ascii=False)
     return jsonify({"errorCode": "1","errorMsg":"请求出错"})
-
+@app.route('/img/<imgId>',methods=['GET'])
+def retimg(imgId):
+        print imgId
+        if imgId is None:
+            pass
+        else:
+            print "图片名字："+imgId
+            image_data = open(os.path.join('static/img/%s' % imgId), "rb").read()
+            response = Response(image_data, mimetype="image/jpeg")
+            # response.headers['Content-Type'] = 'image/png'
+            return response
 if __name__ == "__main__":
-    app.run(host="0.0.0.0",port=5000)
+    app.run(host="127.0.0.1",port=8088)

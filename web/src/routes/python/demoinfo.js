@@ -14,7 +14,8 @@ class Demo extends Component {
 
     }
     goback = () => {
-        this.props.history.goBack();
+        if (!!this.props.history)
+            this.props.history.goBack();
     }
     render() {
         const { demodata } = this.props;

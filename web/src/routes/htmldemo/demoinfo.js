@@ -15,8 +15,9 @@ class Demo extends Component {
         // const democontent = this.props.demodata.filter(ele => ele.id = this.props.match.params.id)[0]
         // console.log("999999999999999", democontent)
     }
-    goback=()=>{
-        this.props.history.goBack();
+    goback = () => {
+        if (!!this.props.history)
+            this.props.history.goBack();
     }
     render() {
         const { demodata } = this.props;
