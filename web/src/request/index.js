@@ -39,7 +39,7 @@ const frameCodeMessage = {
 const requestHeader = {
     'Accept': 'text/plain;',
     'Content-Type': 'application/json',
-    'mode': "cors",
+    // 'mode': "cors",
     'Content-Type': 'application/json; charset=UTF-8',
 }
 function parseJSON(response) {

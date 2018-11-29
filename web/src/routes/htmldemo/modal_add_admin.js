@@ -1,9 +1,8 @@
-import { Modal, Form, Input, Select, Row, Col, Card } from 'antd';
+import { Modal, Form, Input, Row, Col, Card } from 'antd';
 import React, { Component } from 'react';
 import { connect } from 'dva';
 import Ume from "../ume/index.js";
 const FormItem = Form.Item;
-const Option = Select.Option;
 const colLayout = {
     md: 24,
     lg: 12,

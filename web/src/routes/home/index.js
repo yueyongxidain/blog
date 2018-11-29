@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch, Link } from "dva/router";
-import { Layout, Menu, Icon, Avatar, Card } from "antd";
+import { Layout, Menu, Icon, Avatar, Card, Tag } from "antd";
 import moment from "moment";
 import Tools from "../tools/index.js";
 import Htmldemo from "../htmldemo/index.js";
@@ -10,6 +10,7 @@ import ReactInfo from "../react/Q&A.js";
 import Python from "../python/index.js";
 import PythonInfo from "../python/demoinfo.js";
 import "./index.less";
+import qcimg from "../../assets/qcimg.jpg"
 const { Header, Content, Footer, Sider } = Layout;
 class Demo extends Component {
     constructor(props) {
@@ -62,20 +63,22 @@ class Demo extends Component {
                     <div className="Avatar">
                         <Link extact to="/"><Avatar size={164} style={{ display: "block", margin: " 0 auto" }} src="https://picsum.photos/200/300/?random" /></Link>
                     </div>
+                    <div className="Avatar"><Tag color="#87d068"><h2>小二郎 blog</h2></Tag></div>
                     <Menu mode="inline" className="menu" selectedKeys={this.state.selectedKeys}>
                         <Menu.Item key="/tools">
-                            <Link className="nav-text" to="/tools"> <Icon type="user" />开发常用小工具</Link>
+                            <Link className="nav-text" to="/tools"><Icon type="tool" />开发常用小工具</Link>
                         </Menu.Item>
                         <Menu.Item key="/demo">
-                            <Link className="nav-text" extact to="/demo"><Icon type="video-camera" />前端基础demo</Link>
+                            <Link className="nav-text" extact to="/demo"><Icon type="html5" />前端基础demo</Link>
                         </Menu.Item>
                         <Menu.Item key="/reactQ^A">
-                            <Link className="nav-text" to="/reactQ^A"> <Icon type="upload" />react使用碰到的问题</Link>
+                            <Link className="nav-text" to="/reactQ^A"><Icon type="fire" />react使用碰到的问题</Link>
                         </Menu.Item>
                         <Menu.Item key="/python">
-                            <Link className="nav-text" to="/python"><Icon type="user" />python demo</Link>
+                            <Link className="nav-text" to="/python"><Icon type="file-ppt" />python demo</Link>
                         </Menu.Item>
                     </Menu>
+                    <div className="siderimg"><img src={qcimg} width="200px" height="200px"></img></div>
                 </Sider>
                 <Layout className="mincontent" >
                     <Header style={{ background: '#fff', padding: 0 }} >
@@ -90,7 +93,6 @@ class Demo extends Component {
                                         <div className="home-link">React：<a href="https://react.docschina.org/" target="view_window">https://react.docschina.org/</a></div>
                                         <div className="home-link">Antd &nbsp;：<a href="https://ant.design" target="view_window">https://ant.design</a></div>
                                         <div className="home-link">Dva &nbsp;&nbsp; ：<a href="https://dvajs.com/guide/" target="view_window">https://dvajs.com/guide/</a></div>
-                                        <img />
                                     </Card>
                                 )
                             }} />

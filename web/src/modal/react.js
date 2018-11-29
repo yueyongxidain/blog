@@ -12,7 +12,7 @@ export default {
     effects: {
         //登录
         *findreact({ payload }, { call, put }) {
-            const { errorCode, data } = yield call(POST, "/findreact", payload);
+            const { errorCode, data } = yield call(POST, "http://123.207.236.49:8088/findreact", payload);
             if (errorCode == "0") {
                 yield put({
                     type: "save",
@@ -24,7 +24,7 @@ export default {
 
         },
         *changereact({ payload }, { call, put }) {
-            const { errorCode, data } = yield call(POST, "/changereact", payload);
+            const { errorCode, data } = yield call(POST, "http://123.207.236.49:8088/changereact", payload);
             if (errorCode == "0") {
                 yield put({
                     type: "save",
@@ -40,7 +40,7 @@ export default {
             }
         },
         *deletereact({ payload }, { call, put }) {
-            const { errorCode, data } = yield call(POST, "/deletereact", payload);
+            const { errorCode, data } = yield call(POST, "http://123.207.236.49:8088/deletereact", payload);
             if (errorCode == "0") {
                 message.success("删除成功")
                 yield put({

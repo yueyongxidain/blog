@@ -12,12 +12,10 @@ class Demo extends Component {
                 id: this.props.match.params.id
             }
         })
-        // console.log("88888888888888888",this.props)
-        // const democontent = this.props.demodata.filter(ele => ele.id = this.props.match.params.id)[0]
-        // console.log("999999999999999", democontent)
     }
     goback = () => {
-        this.props.history.goBack();
+        if (!!this.props.history)
+            this.props.history.goBack();
     }
     render() {
         const { reactdata } = this.props;

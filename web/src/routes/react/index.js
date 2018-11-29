@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from "dva/router";
 import { List, Avatar, Card } from "antd";
 import { connect } from 'dva';
+import moment from 'moment'
 const data = [
     {
         title: 'Ant Design Title 1',
@@ -37,16 +38,15 @@ class Demo extends Component {
                         onChange: (page) => {
                             console.log(page);
                         },
-                        pageSize: 3,
+                        pageSize: 4,
                     }}
                     renderItem={item => (
                         <List.Item
-                        actions={[<span>{`创建时间：${item.createtime}`}</span>]}
+                        actions={[<span>{`创建时间: ${moment(item.createtime).format("YYYY-MM-DD")}`}</span>]}
                         >
                             <List.Item.Meta
                                 avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
                                 title={<Link to={`/reactQ^A/${item.id}`}>{item.title}</Link>}
-                                // description="Ant Design, a design language for background applications, is refined by Ant UED Team"
                             />
                         </List.Item>
                     )}

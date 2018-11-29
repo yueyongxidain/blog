@@ -12,3 +12,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+body{
+  overflow: auto;
+  /* overflow-x: scroll; */
+}
+.ant-layout-sider-zero-width-trigger{
+  top:12px !important;
+}
+pre{
+  background-color: darkgray
+}

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from "dva/router";
 import { List, Avatar, Icon,Card } from "antd";
 import { connect } from 'dva';
+import moment from "moment"
 let listData = [];
 for (let i = 0; i < 23; i++) {
     listData.push({
@@ -32,12 +33,12 @@ class Demo extends Component {
                         onChange: (page) => {
                             console.log(page);
                         },
-                        pageSize: 3,
+                        pageSize: 4,
                     }}
                     dataSource={this.props.demodata}
                     renderItem={item => (
                         <List.Item
-                            actions={[<span>{`创建时间：${item.createtime}`}</span>]}
+                            actions={[<span>{`创建时间：${moment(item.createtime).format("YYYY-MM-DD")}`}</span>]}
                         >
                             <List.Item.Meta
                                 avatar={<Avatar src='https://picsum.photos/300/300/?random' />}

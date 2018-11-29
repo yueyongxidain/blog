@@ -13,7 +13,7 @@ export default {
     effects: {
         //登录
         *findhtmlDemo({ payload }, { call, put }) {
-            const { errorCode, data } = yield call(POST, "/findhtmlDemo", payload);
+            const { errorCode, data } = yield call(POST, "http://123.207.236.49:8088/findhtmlDemo", payload);
             if (errorCode == "0") {
                 yield put({
                     type: "save",
@@ -25,7 +25,7 @@ export default {
 
         },
         *changedemo({ payload }, { call, put }) {
-            const { errorCode, data } = yield call(POST, "/changedemo", payload);
+            const { errorCode, data } = yield call(POST, "http://123.207.236.49:8088/changedemo", payload);
             if (errorCode == "0") {
                 yield put({
                     type: "save",
@@ -41,7 +41,7 @@ export default {
             }
         },
         *deletedemo({ payload }, { call, put }) {
-            const { errorCode, data } = yield call(POST, "/deletedemo", payload);
+            const { errorCode, data } = yield call(POST, "http://123.207.236.49:8088/deletedemo", payload);
             if (errorCode == "0") {
                 message.success("删除成功")
                 yield put({

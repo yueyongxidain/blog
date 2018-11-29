@@ -1,7 +1,5 @@
-import { routerRedux } from "dva/router";
 import { GET, POST } from "../request/index.js";
-// import { getAuthority, setAuthority } from "../authority/index.js";
-import fetch from "dva/fetch";
+import { message } from "antd"
 export default {
     namespace: "python",
     state: {
@@ -13,7 +11,7 @@ export default {
     effects: {
         //登录
         *findpython({ payload }, { call, put }) {
-            const { errorCode, data } = yield call(POST, "/findpython", payload);
+            const { errorCode, data } = yield call(POST, "http://123.207.236.49:8088/findpython", payload);
             if (errorCode == "0") {
                 yield put({
                     type: "save",
@@ -24,7 +22,7 @@ export default {
             }
         },
         *changepython({ payload }, { call, put }) {
-            const { errorCode, data } = yield call(POST, "/changepython", payload);
+            const { errorCode, data } = yield call(POST, "http://123.207.236.49:8088/changepython", payload);
             if (errorCode == "0") {
                 yield put({
                     type: "save",
@@ -33,6 +31,16 @@ export default {
                         addvisible: false
                     }
                 })
+                yield put({
+                    type: "findpython",
+                    payload: {}
+                })
+            }
+        },
+        *deletepython({ payload }, { call, put }) {
+            const { errorCode, data } = yield call(POST, "http://123.207.236.49:8088/deletepython", payload);
+            if (errorCode == "0") {
+                message.success("删除成功")
                 yield put({
                     type: "findpython",
                     payload: {}

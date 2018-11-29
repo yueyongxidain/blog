@@ -11,7 +11,7 @@ export default {
     },
     effects: {
         *findtool({ payload }, { call, put }) {
-            const { errorCode, data } = yield call(POST, "/findtool", payload);
+            const { errorCode, data } = yield call(POST, "http://123.207.236.49:8088/findtool", payload);
             if (errorCode == "0") {
                 yield put({
                     type: "save",
@@ -22,7 +22,7 @@ export default {
             }
         },
         *change({ payload }, { call, put }) {
-            const { errorCode, data } = yield call(POST, "/changetool", payload);
+            const { errorCode, data } = yield call(POST,  "http://123.207.236.49:8088/changetool", payload);
             if (errorCode == "0") {
                 yield put({
                     type: "save",
@@ -38,7 +38,7 @@ export default {
             }
         },
         *deletetool({ payload }, { call, put }) {
-            const { errorCode, data } = yield call(POST, "/deletetool", payload);
+            const { errorCode, data } = yield call(POST,  "http://123.207.236.49:8088/deletetool", payload);
             if (errorCode == "0") {
                 message.success("删除成功")
                 yield put({
